@@ -1,0 +1,36 @@
+{
+    "name": "nkls/tables",
+    "description": "Nkls tables",
+    "keywords": [
+        "nkls",
+        "livewire",
+        "datatables",
+        "tables",
+        "laravel"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niklis",
+            "email": "Niklis@users.noreply.github.com",
+            "homepage": "https://github.com/Niklis"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "livewire/livewire": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nkls\\Tables\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nkls\\Tables\\NklsTablesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

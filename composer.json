@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nkls\\Tables\\NklsTablesServiceProvider"
+                "Nkls\\Tables\\Providers\\NklsTablesServiceProvider"
             ]
         }
     },

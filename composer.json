@@ -1,13 +1,6 @@
 {
     "name": "nkls/tables",
     "description": "Nkls tables",
-    "keywords": [
-        "nkls",
-        "livewire",
-        "datatables",
-        "tables",
-        "laravel"
-    ],
     "license": "MIT",
     "authors": [
         {

@@ -8,6 +8,9 @@ class NklsTablesServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        //helpers
+        require_once __DIR__ . '/../Helpers/helpers.php';
+
         // use the vendor configuration file as fallback
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/nkls-tables.php',

@@ -1,5 +1,6 @@
 <div>
     @if ($paginator->hasPages())
+    
         @php(isset($this->numberOfPaginatorsRendered[$paginator->getPageName()]) ? $this->numberOfPaginatorsRendered[$paginator->getPageName()]++ : ($this->numberOfPaginatorsRendered[$paginator->getPageName()] = 1))
 
         <nav>
@@ -17,7 +18,7 @@
                             wire:loading.attr="disabled" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</button>
                     </li>
                 @endif
-
+            
                 {{-- Pagination Elements --}}
                 @foreach ($elements as $element)
                     {{-- "Three Dots" Separator --}}
@@ -28,7 +29,7 @@
 
                     {{-- Array Of Links --}}
                     @if (is_array($element))
-                        @foreach ($element as $page => $url)
+                        @foreach ($element as $page => $url)    
                             @if ($page == $paginator->currentPage())
                                 <li class="page-item active"
                                     wire:key="paginator-{{ $paginator->getPageName() }}-{{ $this->numberOfPaginatorsRendered[$paginator->getPageName()] }}-page-{{ $page }}"
@@ -43,7 +44,7 @@
                         @endforeach
                     @endif
                 @endforeach
-
+                
                 {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
                     <li class="page-item">

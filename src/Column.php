@@ -12,6 +12,8 @@ class Column
 
     public string $label;
 
+    public string $sortByKey;
+
     public string $key;
 
     public string $class = '';
@@ -46,8 +48,7 @@ class Column
         $this->class = $class;
         return $this;
     }
-
-
+    
     //get value from array with dot notation string or without
     public static function getValue($array, $dotNotationString)
     {

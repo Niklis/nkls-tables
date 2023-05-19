@@ -4,26 +4,50 @@ namespace Nkls\Tables;
 
 class Column
 {
-    public string $theme = 'bootstrap';
+    public string $key;
 
-    public string $th = 'headings.default';
-
-    public string $td = 'columns.default';
+    public string $hash;
 
     public string $label;
 
     public string $sortByKey;
 
-    public string $key;
+    public $sortable = false;
 
-    public string $class = '';
+    public string $theme = '';
+
+    public string $thTmpl = 'default';
+
+    public string $tdTmpl = 'default';
+
+    public string $thClass = '';
+
+    public string $tdClass = '';
+
+    public $filter = null;
+
+    public string $filterTmpl = 'none';
 
     public function __construct($key, $label)
     {
         $this->key = $key;
+        $this->hash = getUid();
         $this->label = $label;
         $this->theme = $this->getTheme();
         $this->setTheme();
+    }
+
+    public function sortable($sort = true)
+    {
+        $this->sortable = $sort;
+        return $this;
+    }
+
+    public function addFilter($filter = 'text')
+    {
+        $this->filter = $filter;
+        $this->filterTmpl = 'nkls::' . $this->theme . '.filters.' . $filter;
+        return $this;
     }
 
     public static function make($key, $label)
@@ -31,41 +55,39 @@ class Column
         return new static($key, $label);
     }
 
-    public function th($tmpl)
+    public function thTmpl($tmpl)
     {
-        $this->th = 'nkls::' . $this->theme . '.' . $tmpl;
+        $this->thTmpl = 'nkls::' . $this->theme . '.headings.' . $tmpl;
         return $this;
     }
 
-    public function td($tmpl)
+    public function tdTmpl($tmpl)
     {
-        $this->td = 'nkls::' . $this->theme . '.' . $tmpl;
+        $this->tdTmpl = 'nkls::' . $this->theme . '.columns.' . $tmpl;
         return $this;
     }
 
-    public function class($class)
+    public function thClass($class)
     {
-        $this->class = $class;
+        $this->thClass = $class;
         return $this;
     }
-    
-    //get value from array with dot notation string or without
-    public static function getValue($array, $dotNotationString)
+
+    public function tdClass($class)
     {
-        foreach (explode('.', $dotNotationString) as $segment) {
-            $array = $array[$segment];
-        }
-        return $array;
+        $this->tdClass = $class;
+        return $this;
     }
 
     public function getTheme()
     {
-        return config('nkls-tables.theme', 'bootstrap');
+        return $this->theme == '' ? config('nkls-tables.theme') : $this->theme;
     }
 
     public function setTheme()
     {
-        $this->th = 'nkls::' . $this->theme . '.' . $this->th;
-        $this->td = 'nkls::' . $this->theme . '.' . $this->td;
+        $this->thTmpl = 'nkls::' . $this->theme . '.headings.' . $this->thTmpl;
+        $this->tdTmpl = 'nkls::' . $this->theme . '.columns.' . $this->tdTmpl;
+        $this->filterTmpl = 'nkls::' . $this->theme . '.filters.' . $this->filterTmpl;
     }
 }

@@ -55,31 +55,17 @@ abstract class Table extends Component
         $this->searchTmpl = $this->getSearchTmpl();
         $this->perPageTmpl = $this->getPerPageTmpl();
         $this->uid = getUid();
-
-        // foreach ($this->columns as $col) {
-        //     if ($col->filter !== null) {
-        //         $this->filters[$col->hash] = ['key' => $col->key, 'type' => $col->filter, 'val1' => '', 'val2' => ''];
-        //     }
-        // }
+        
         foreach ($this->columns as $col) {
             if ($col['filter'] !== null) {
                 $this->filters[$col['hash']] = ['key' => $col['key'], 'type' => $col['filter'], 'val1' => '', 'val2' => ''];
             }
         }
-        // dd($this->filters);
     }
 
     public abstract function query(): \Illuminate\Database\Eloquent\Builder;
 
     public abstract function columns(): array;
-
-    // public function filter($column, $val1, $val2 = '')
-    // {
-    //     if (isset($this->filters[$column])) {
-    //         $this->filters[$column]['val1'] = $val1;
-    //         $this->filters[$column]['val2'] = $val2;
-    //     }
-    // }
 
     public function search($value)
     {
@@ -100,7 +86,6 @@ abstract class Table extends Component
         }
         //filters
         if (count($this->filters)) {
-            // dd($this->filters);
             foreach ($this->filters as $col => $filter) {
                 if ($filter['val1'] != '' && $filter['val2'] == '') {
                     //single filter

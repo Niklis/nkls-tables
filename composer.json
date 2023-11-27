@@ -1,0 +1,45 @@
+{
+    "name": "nkls/tables",
+    "description": "Nkls tables",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niklis",
+            "email": "Niklis@users.noreply.github.com",
+            "homepage": "https://github.com/Niklis"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^10.10",
+        "livewire/livewire": "^3.2"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "src/Helpers/helpers.php"
+        ],
+        "psr-4": {
+            "Nkls\\Tables\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nkls\\Tables\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nkls\\Tables\\NklsTablesServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit"
+        ]
+    },
+    "archive": {
+        "exclude": ["/node_modules"]
+    }
+}

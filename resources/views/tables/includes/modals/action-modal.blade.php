@@ -7,6 +7,6 @@
 </div>
 <div class="modal-body">
     @if ($action == 'create' || $action == 'edit')
-        @include('nkls::forms.' . $this->getEntityName() . '.' . $action)
+        @include($this->getConfig('formViewPrefix') . $this->getEntityName() . '.' . $action)
     @endif
 </div>

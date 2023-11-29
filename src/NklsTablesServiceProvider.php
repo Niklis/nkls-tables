@@ -25,16 +25,15 @@ class NklsTablesServiceProvider extends ServiceProvider
         $this->publishes([__DIR__ . '/../config/nkls-tables.php' => config_path('nkls-tables.php')], 'config');
         //assets
         $this->publishes([__DIR__ . '/../assets/themes' => public_path('themes')], 'assets');
-        // $this->publishes([__DIR__ . '/../assets/css' => public_path('css')], 'assets');
-        // $this->publishes([__DIR__ . '/../assets/js' => public_path('js')], 'assets');
+        //views
+        $this->publishes([__DIR__ . '/../resources/views' => base_path('resources/views/vendor/nkls/tables')], 'views');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/' . config('nkls-tables.theme') . '/views', 'nkls');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nkls');
 
         $this->registerLivewireComponents();
 
-        // Blade::anonymousComponentPath(__DIR__ . '/../resources/' . config('nkls-tables.theme') . '/views');
-        Blade::anonymousComponentPath(__DIR__ . '/../resources/' . config('nkls-tables.theme') . '/views');
-       
+        Blade::anonymousComponentPath(__DIR__ . '/../resources/views');
+        Blade::anonymousComponentPath(base_path().'/resources/views');
     }
 
     /**

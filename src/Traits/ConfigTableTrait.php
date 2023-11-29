@@ -33,7 +33,8 @@ trait ConfigTableTrait
             'desktopView' => [
                 'layout' => 'desktop-table',
             ],
-            'viewPrefix' => 'nkls::tables.layouts.',
+            'tableViewPrefix' => config('nkls-tables.path_to_tables_views'), //nkls::tables.layouts.
+            'formViewPrefix' => config('nkls-tables.path_to_forms_views'), //nkls::tables.forms.
             'searchValue' => '',
             'filtersEnabled' => true,
             'perPageOptions' => [5, 10, 15, 20, 30, 50, 100],

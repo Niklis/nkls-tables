@@ -1,7 +1,7 @@
 @props(['class' => '', 'id' => '', 'theme', 'config'])
 
 <div class="d-flex flex-column gap-3" @if ($tableId) id="{{ $tableId }}" @endif>
-    <h1>NEW TABLES</h1>
+    
     <div x-data="{}" x-init="$wire.$set('screenSize', window.innerWidth)">
         <div x-on:resize.window.debounce="$wire.$set('screenSize', window.innerWidth)"></div>
     </div>
@@ -19,7 +19,7 @@
     </div> --}}
 </div>
 @once
-    @push('footerScript')
+    {{-- @push('footerScript') --}}
         <script>
             window.addEventListener('closeModal', (event) => {
                 //modalId passed from component
@@ -30,5 +30,5 @@
                 modal.hide();
             })
         </script>
-    @endpush
+    {{-- @endpush --}}
 @endonce

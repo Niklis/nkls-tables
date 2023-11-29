@@ -1,6 +1,6 @@
 <?php
 
-namespace Nkls\Tables\Tables;
+namespace Nkls\Tables;
 
 use Livewire\Component;
 

@@ -23,12 +23,6 @@ abstract class Table extends Component
 
     public $modalId;
 
-    // public $actionModalId;
-
-    // public $filtersModalId;
-
-    // public $sortsModalId;
-
     public $theme = '';
 
     public $columns;
@@ -57,13 +51,7 @@ abstract class Table extends Component
     {
         $this->tableId = $this->getFingerPrint();
 
-        $this->modalId = 'm_' . $this->getFingerPrint(); //modal id
-
-        // $this->actionModalId = 'am_' . $this->getFingerPrint(); //action-modal id
-
-        // $this->filtersModalId = 'fm_' . $this->getFingerPrint(); //filters-modal id
-
-        // $this->sortsModalId = 'sm_' . $this->getFingerPrint(); //sorts-modal id
+        $this->modalId = 'm_' . $this->getFingerPrint();
 
         $this->config = $this->initConfig();
 
@@ -99,7 +87,7 @@ abstract class Table extends Component
 
     private function getLayout()
     {
-        $viewPrefix = $this->getConfig('viewPrefix'); //'nkls::tables.layouts.';
+        $viewPrefix = $this->getConfig('tableViewPrefix'); //'nkls::tables.layouts.';
 
         if ($this->screenSize == null || $this->screenSize > $this->getConfig('mobileWidth'))
             return $this->layout = $viewPrefix . $this->getConfig('desktopView.layout');

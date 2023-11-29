@@ -4,8 +4,6 @@ namespace Nkls\Tables\Traits;
 
 trait CrudTrait
 {
-    // public $openedModalId = null;
-
     public $openModal;
 
     public $action;
@@ -21,8 +19,7 @@ trait CrudTrait
     {
         $this->action = 'create';
         $this->modalBody = 'nkls::tables.includes.modals.action-modal';
-
-        // $this->openedModalId = $this->actionModalId;
+        
         $className = get_class($this->form);
         $this->form = new $className($this, 'form');
 
@@ -38,15 +35,9 @@ trait CrudTrait
         $this->closeModal();
     }
 
-    // public function openModal($id)
-    // {
-    //     $this->openedModalId = $id;
-    // }
-
     public function closeModal()
     {
         $this->action = 'closeModal';
         $this->dispatch('closeModal', modalId: $this->modalId);
-        // $this->openedModalId = null;
     }
 }

@@ -1,6 +1,6 @@
 <form wire:submit="store">
     <div class="form-group">
-        <label for="avatar" class="p-1">Avatar</label>{{ $this->form->avatar }}
+        <label for="avatar" class="p-1">Avatar</label>
         <input type="file" class="form-control @error('form.avatar') is-invalid @enderror" id="avatar"
             wire:model.lazy="form.avatar">
         <div class="invalid-feedback">
@@ -42,7 +42,10 @@
             @enderror
         </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-4" @if($errors->any()) disabled @endif>Save</button>
+    <button type="submit" class="btn btn-primary mt-4"
+        @if ($errors->any()) disabled @endif>
+        Save
+    </button>
     <button type="button" wire:click="closeModal" class="btn btn-secondary mt-4" data-bs-dismiss="modal"
         aria-label="Close">Close</button>
 </form>

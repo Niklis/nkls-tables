@@ -9,11 +9,11 @@
             "homepage": "https://github.com/Niklis"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "laravel/framework": "^10.10",
         "livewire/livewire": "^3.2"
     },
-    "minimum-stability": "dev",
     "autoload": {
         "files": [
             "src/Helpers/helpers.php"
